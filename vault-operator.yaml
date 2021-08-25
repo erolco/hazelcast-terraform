@@ -1,0 +1,20 @@
+---
+deployments:
+  # test only
+  backupOperator: false
+  # test only
+  restoreOperator: false
+etcdOperator:
+  name: etcd-operator
+  enabled: true
+  replicaCount: 1
+  readinessProbe:
+    enabled: true
+  livenessProbe:
+    enabled: true
+etcdCluster:
+  # test only
+  enableTLS: false
+  pod:
+    # test only
+    antiAffinity: false
