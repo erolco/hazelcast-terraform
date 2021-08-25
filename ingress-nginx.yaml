@@ -1,0 +1,26 @@
+---
+controller:
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  hostNetwork: "true"
+  dnsPolicy: ClusterFirstWithHostNet
+  kind: DaemonSet
+  service:
+    type: ClusterIP
+  stats:
+    enabled: "true"
+  config:
+    ssl-redirect: "false"
+    use-forwarded-headers: "true"
+  extraArgs:
+    http-port: 1080
+    https-port: 1443
+  metrics:
+    enabled: True
+    service:
+      annotations:
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "10254"
+        prometheus.io/scrape: "true"
